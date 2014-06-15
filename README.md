@@ -20,7 +20,7 @@ Before you will be able to start up a client and play the game you will need to 
 game server.
 
 The game server is to be run on a Node.js server. To learn about Node.js and how to
-install it, please visit http://www.nodejs.com (make sure NPM is included in the
+install it, please visit http://www.nodejs.org (make sure NPM is included in the
 package you download as this will be needed later).
 
 With Node.js installed on your machine, you will need to install an additional module
