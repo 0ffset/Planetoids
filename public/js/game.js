@@ -759,8 +759,8 @@ function updateCanvasOffsets() {
 
 // Set space ship start properties (on initialization and re-spawn)
 function setLocalPlayerStartProperties() {
-	var startX        = random(canvas.width*0.1, canvas.width - canvas.width*0.1),
-			startY        = random(canvas.width*0.1, canvas.height - canvas.width*0.1),
+	var startX        = random(canvas.width*0.1, area.width - canvas.width*0.1),
+			startY        = random(canvas.width*0.1, area.height - canvas.width*0.1),
 			startVelocity = new Vector(0, 0);
 			startRotation = random(0, 360)*(Math.PI/180);
 	
