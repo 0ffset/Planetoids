@@ -1,0 +1,290 @@
+/**
+ * Game CSS styles
+ */
+
+/**
+ * General
+ */
+body {
+	font-family: Georgia, sans serif;
+	background: #000 url("../img/bg.jpg");
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+h1 {
+	font-size: 3em;
+	font-weight: bold;
+	margin: 0 0 1em 0;
+}
+
+p {
+	margin: 1em 0;
+}
+
+a,.link {
+	color: #EA8400;
+	text-decoration: none;
+}
+a:hover,.link:hover {
+	color: #B56300;
+	cursor: pointer;
+}
+
+b { font-weight: bold; }
+i { font-style: italic; }
+
+canvas {
+	display: block;
+	background-image: url("../img/bg.jpg");
+}
+
+input[type='text']::-webkit-input-placeholder {
+	font-style: italic;
+	color: rgba(0, 0, 0, 0.3);
+}
+input[type='text']::-moz-placeholder {
+	font-style: italic;
+	color: rgba(0, 0, 0, 0.3);
+}
+input[type='text']::placeholder {
+	font-style: italic;
+	color: rgba(0, 0, 0, 0.3);
+}
+
+input[type='submit'] {
+	border: 0;
+	padding: 0.1em 0.5em;
+	background-color: #FF8800;
+	color: #fff;
+	text-shadow: 2px 2px rgba(0, 0, 0, 0.5);
+	box-shadow: 3px 3px 0 rgba(215, 130, 30, 0.5);
+}
+input[type='submit']:hover {
+	background-color: #FF9926;
+}
+
+/**
+ * Start modal window
+ */
+/* The start modal window and controls modal window */
+#start-modal,#controls-modal {
+	padding: 30px;
+	width: 70%;
+	text-align: center;
+	background-color: #fff;
+	position: absolute;
+	z-index: 10;
+	border: 1px solid #000;
+	box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.5);
+	display: none; /* Will fade in on onload */
+}
+#start-modal h1 {
+	margin-bottom: 0;
+	text-shadow: 3px 3px 0 rgba(215, 130, 30, 0.5);
+}
+#start-modal p.sub-header {
+	font-size: 2em;
+	margin-top: 0.5em;
+	margin-bottom: 0;
+}
+#start-modal p {
+	margin-left: auto;
+	margin-right: auto;
+}
+#start-modal div.intro {
+	margin: 1em auto;
+	width: 85%;
+	-webkit-column-count: 2; /* Chrome, Safari, Opera */
+	-moz-column-count: 2; /* Firefox */
+	column-count: 2;
+}
+#start-modal div.intro p {
+	margin-top: 0;
+}
+#controls-table {
+	margin: 1em auto 2em auto;
+}
+#controls-table td {
+	padding: 0.2em 0.5em;
+	vertical-align: top;
+}
+#controls-table td:nth-child(1) {
+	text-align: right;
+}
+#controls-table td:nth-child(2) {
+	text-align: left;
+}
+
+/* Alias input field */
+#alias {
+	margin: 0.5em 0;
+	font-family: inherit;
+	font-size: 2em;
+	text-align: center;
+	border: 0;
+	background-image: url("../img/input_bg.gif");
+	box-shadow: inset 3px 3px 0 rgba(215, 130, 30, 0.2);
+}
+#alias:hover {
+	background-image: url("../img/input_bg_hover.gif");
+}
+
+/* Start game button */
+#start-btn {
+	font-family: inherit;
+	font-size: 2em;
+	text-transform: uppercase;
+	cursor: pointer;
+}
+
+/* Output element of start modal for error message */
+#output {
+	display: block;
+	margin-top: 1em;
+	color: hsl(0, 75%, 50%);
+}
+#output:empty {
+	margin: 0;
+}
+
+/**
+ * In game modals
+ */
+/* Loader */
+#loader {
+	color: #fff;
+	width: 100%;
+	text-align: center;
+	font-family: verdana, seriff;
+	font-size: 0.8em;
+	position: absolute;
+	top: 42%;
+	z-index: 7;
+}
+
+/* Modal for statistics and for new round */
+#stats-modal,#newround-modal {
+	width: 80%;
+	min-height: 50%;
+	padding: 1em;
+	background: rgba(0, 0, 0, 0.5);
+	color: #fff;
+	border: 1px solid #fff;
+	box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.3);
+	position: absolute;
+	display: none; /* Will only show on press TAB */
+}
+#stats-modal {
+	z-index: 10;
+}
+#stats-modal h1 {
+	margin: 0;
+	display: inline-block;
+}
+#newround-modal{
+	text-align: center;
+	z-index: 9;
+}
+
+/* Table for statistics */
+#stats-table {
+	width: 100%;
+}
+#stats-table thead {
+	font-weight: bold;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+#stats-table th,#stats-table td {
+	text-align: right;
+	vertical-align: bottom;
+	padding: 3px;
+}
+#stats-table th:nth-child(1),#stats-table td:nth-child(1) {
+	text-align: left;
+}
+#stats-table th:not(:nth-child(1)),#stats-table td:not(:nth-child(1)) {
+	width: 120px;
+}
+#stats-table tr.local-player {
+	background-color: rgba(255, 255, 255, 0.1);
+}
+
+/**
+ * In game log
+ */
+/* The log div and message input */
+#log,#message-div {
+	color: rgba(255, 255, 255, 0.9);
+	font-family: verdana, sans;
+	font-size: 12px;
+	padding: 10px;
+	background-color: rgba(0, 0, 0, 0.2);
+	border: 1px solid rgba(255, 255, 255, 0.8);
+	overflow: hidden;
+	position: absolute;
+	z-index: 8;
+	display: none; /* Will show on game init */
+}
+#log p {
+	margin: 0.5em 0 1em 3.5em;
+	text-indent: -3.5em;
+	line-height: 1.3em;
+}
+#message-div label {
+	display: inline-block;
+	width: 70px;
+	margin-top: 3px;
+}
+#message {
+	float: right;
+	background: transparent;
+	font-family: inherit;
+	border: 0;
+	color: inherit;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/**
+ * In game misc values
+ */
+#values {
+	color: rgba(255, 255, 255, 0.8);
+	font-family: verdana;
+	font-size: 0.8em;
+	padding: 20px 0;
+	width: 100%;
+	text-align: center;
+	position: absolute;
+	bottom: 0;
+	z-index: 8;
+}
+#sound {
+	width: 64px;
+	height: 64px;
+	display: inline-block;
+}
+#sound.on {
+	background: url("../img/sound_on.png") center center;
+}
+#sound.off {
+	background: url("../img/sound_off.png") center center;
+}
+
+
+/**
+ * Misc classes
+ */
+.italic { font-style: italic; }
+
+.small { font-size: 0.75em; }
+
+.big { font-size: 1.5em; }
+.bigger { font-size: 3em; margin-bottom: 0.5em; }
+.biggest { font-size: 4em; }
+
+.smallprint {
+	text-align: right;
+	font-size: 0.7em;
+	color: #777;
+}

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+	<head>
+		<title>Planetoids: an MMO Arcade Game</title>
+		<meta charset="utf-8">
+		
+		<!--
+		/***********************
+		** CSS STYLE SHEETS
+		************************/ -->
+		
+		<link rel="stylesheet" href="style/reset.css">
+		<link rel="stylesheet" href="style/game.css">
+	</head>
+	
+	<body>
+		
+		<!--
+		/***********************
+		** IN GAME MODAL WINDOWS
+		************************/ -->
+		
+		<!-- Loader -->
+		<div id="loader"><img src="img/loader.gif" alt="Loading..." width="100" height="100" /></div>
+		
+		<!-- Modal window on start-up -->
+		<div id="start-modal">
+			<h1>Play <i>Planetoids</i> online!</h1>
+			<p class="sub-header">70's arcade cabinets have mated with modern web browsers</p>
+			<div class="intro">
+				<p class="small"><b>The year was 1979</b>. Atari had in November released a game that would come to be one of the first major hits of the <a href="http://en.wikipedia.org/wiki/Golden_age_of_video_arcade_games">golden age of arcade games</a>. The game was called <i><a href="http://en.wikipedia.org/wiki/Asteroids_(video_game)">Asteroids</a></i>.</p>
+				<p class="small">A lot has happened since. What used to be bulky arcade cabinets is now pocket-size laptops or smartphones. The game you are about to start is an arcade <a href="http://en.wikipedia.org/wiki/MMOG">MMOG</a> inspired by Atari’s classic <i>Asteroids</i>, but runs on modern <a href="http://en.wikipedia.org/wiki/Html5">HTML5</a> technology alone.</p>
+				<p class="small">If you are a nerd like me and want to know more about how it works, check out <a href="http://www.student.bth.se/~anlu14/04-javascript/kmom07-10/planetoids_product_page">this article</a>. If you, more likely however, don't give a darn about that and just want to play the darn game already, type your alias in the field below and begin the adventure!</p>
+				<p class="smallprint">Enjoy!<br />Anton Lundberg, developer</p>
+			</div>
+			<p class="big"><span id="controls" class="link">Click here</span> to learn the controls.</p>
+			<p class="italic">Psst... Press F11 for full screen!</p>
+			<form id="start-form">
+				<input id="alias" type="text" placeholder="Your alias" maxlength="16" autofocus /><br />
+				<input id="start-btn" type="submit" value="Start game!" />
+			</form>
+			<output id="output"></output>
+		</div>
+		
+		<!-- Modal window for controls -->
+		<div id="controls-modal">
+			<table id="controls-table">
+				<tbody>
+					<tr>
+						<td><img src="img/up.png" alt="UP" width="55" height="54"></td>
+						<td>Press <b>up</b> arrow to accelerate.</td>
+					</tr>
+					<tr>
+						<td><img src="img/leftright.png" alt="LEFT/RIGHT" width="109" height="54"></td>
+						<td>Press <b>left</b> or <b>right</b> arrows to rotate.</td>
+					</tr>
+					<tr>
+						<td><img src="img/space.png" alt="SPACE" width="138" height="54"></td>
+						<td>Hit <b>SPACE</b> bar to fire bullets.</td>
+					</tr>
+					<tr>
+						<td><img src="img/tab.png" alt="TAB" width="77" height="54"></td>
+						<td>Press <b>TAB</b> key to view current statistics.</td>
+					</tr>
+					<tr>
+						<td><img src="img/m.png" alt="M" width="55" height="54"></td>
+						<td>Press <b>M</b> to toggle sound on and off.</td>
+					</tr>
+					<tr>
+						<td><img src="img/enter.png" alt="ENTER" width="78" height="94"></td>
+						<td>Press <b>ENTER</b> key to chat.</td>
+					</tr>
+				</tbody>
+			</table>
+			<span id="back-to-start" class="link">&laquo; Back to start window</span>
+		</div>
+		
+		<!-- Modal window for viewing statistics -->
+		<div id="stats-modal">
+			<h1>Game statistics</h1>
+			<table id="stats-table">
+				<thead>
+					<th>Alias</th>
+					<th>Enemies killed</th>
+					<th>Asteroids destroyed</th>
+					<th>Deaths</th>
+					<th>Score</th>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+			<p>Players online: <span id="players-online"></span></p>
+		</div>
+		
+		<!-- Modal window for displaying last rounds winner and counting down to next round -->
+		<div id="newround-modal">
+			<p id="winner" class="big"></p>
+			<p class="bigger">Next round begins in:<br /><span id="newround-stopwatch" class="biggest"></span></p>
+		</div>
+
+		<!--
+		/***********************
+		** IN GAME CONTAINERS
+		************************/ -->
+		
+		<!-- Container for log -->
+		<div id="log"></div>
+		
+		<!-- Container for message input -->
+		<div id="message-div">
+			<label for="message">Message: </label><input type="text" id="message" />
+		</div>
+		
+		<!-- Values container -->
+		<div id="values">
+			<div id="sound"></div>
+			<div id="fps"></div>
+			<div id="ping"></div>
+		</div>
+	
+		<!--
+		/***********************
+		** GAME CANVAS
+		************************/ -->
+		
+		<canvas id="game-canvas"></canvas>
+		
+		<!--
+		/***********************
+		** JAVASCRIPT FILES
+		************************/ -->
+		
+		<!-- Socket.io -->
+		<script src="http://localhost:8021/socket.io/socket.io.js"></script>
+		
+		<!-- jQuery -->
+		<script src="js/lib/jquery-1.11.0.js"></script>
+		
+		<!-- requestAnimationFrame polyfill -->
+		<script src="js/lib/requestAnimationFrame.js"></script>
+		
+		<!-- Game classes -->
+		<script src="js/classes/Keys.js"></script>
+		<script src="js/classes/Vector.js"></script>
+		<script src="js/classes/SpaceObject.js"></script>
+		<script src="js/classes/Asteroid.js"></script>
+		<script src="js/classes/Bullet.js"></script>
+		<script src="js/classes/SmokeBubble.js"></script>
+		<script src="js/classes/SpaceShip.js"></script>
+		
+		<!-- Game modules -->
+		<script src="js/modules/effect.js"></script>
+		<script src="js/modules/sound.js"></script>
+		<script src="js/modules/texture.js"></script>
+		<script src="js/modules/log.js"></script>
+		<script src="js/modules/stats.js"></script>
+		
+		<!-- Game core -->
+		<script src="js/game.js"></script>
+		
+		<!-- Game start-up window -->
+		<script src="js/gameStart.js"></script>
+	
+	</body>
+
+</html>
