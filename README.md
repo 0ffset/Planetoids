@@ -10,6 +10,13 @@ the contents of this package. The contents of this package are:
 * Files needed to run a Planetoids game server
 * Files needed for the Planetoids client
 
+Preview
+============
+
+Check out a preview of the gameplay on YouTube:
+
+[![Planetoids Preview](https://raw.githubusercontent.com/antberg/Planetoids/master/docs/planetoids_thumbnail.png)](https://www.youtube.com/watch?v=g-2LZ0iQgHg)
+
 Installation
 ============
 
